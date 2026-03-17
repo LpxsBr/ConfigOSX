@@ -6,9 +6,14 @@ Configuração simplificada para rodar macOS via Docker (baseado no [Docker-OSX]
 
 ---
 
+## Requisitos básicos
+
+- Requer WSL2
+- Requer suporte a KVM
+
 ## 🚀 Uso básico
 
-### Rodar isso aqui
+### Rodar isso aqui no ambiente WSL
 ```bash
 
 docker compose up --build -d
@@ -18,8 +23,6 @@ docker compose up --build -d
 ---
 
 ## ⚠️ Observações
-
-- Requer suporte a KVM
 - Pode precisar de ajustes dependendo do ambiente
 - Não está finalizado
 
