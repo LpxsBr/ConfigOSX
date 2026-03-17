@@ -2,9 +2,12 @@ FROM sickcodes/docker-osx:latest
 
 USER root
 
-# Cria um wrapper global pro curl
+# 🔥 Wrapper global do curl (corrigido)
 RUN mv /usr/bin/curl /usr/bin/curl.real && \
-    echo '#!/bin/bash\n/usr/bin/curl.real -k "$@"' > /usr/bin/curl && \
+    printf '#!/bin/sh\nexec /usr/bin/curl.real -k "$@"\n' > /usr/bin/curl && \
     chmod +x /usr/bin/curl
+
+# 🔥 bypass git SSL
+RUN git config --system http.sslVerify false
 
 USER arch

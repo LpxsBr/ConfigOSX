@@ -1,3 +1,5 @@
+version: "3.9"
+
 services:
   macos:
     build: .
@@ -18,13 +20,23 @@ services:
       - macos_data:/home/arch/OSX
 
     environment:
+      # display
       DISPLAY: ${DISPLAY:-:0.0}
-      GENERATE_UNIQUE: "true"
-      MASTER_PLIST_URL: "https://raw.githubusercontent.com/sickcodes/osx-serial-generator/master/config-custom.plist"
-      SHORTNAME: "ventura"
 
+      # serial / config
+      GENERATE_UNIQUE: "true"
+      MASTER_PLIST_URL: "https://raw.githubusercontent.com/sickcodes/osx-serial-generator/master/config-custom-sonoma.plist"
+      SHORTNAME: "sequoia"
+
+      # CPU (igual ao docker run)
+      CPU: "Haswell-noTSX"
+      CPUID_FLAGS: "kvm=on,vendor=GenuineIntel,+invtsc,vmware-cpuid-freq=on"
+
+      # recursos
       RAM: "8"
       SMP: "4"
+
+      # opcional (mantive o seu)
       EXTRA: "-cpu host"
 
     dns:
